@@ -1,0 +1,49 @@
+﻿@model FHR.Web.Models.AuthorityRatingsViewModel
+
+@{
+    ViewBag.Title = "Food Ratings";
+}
+
+@if (!Model.AuthoritiesLoadedSuccessfuly)
+{
+    <p>There was a problem obtaining the local authorities. Please try again later.</p>
+}
+else
+{
+    @Html.DropDownList("Selected", Model.AuthoritiesSelectList, new { id = "authorities", @class = "selectpicker" })
+}
+
+<div id="ratingContainer" class="container">
+    <table class="table ratingTable">
+        <thead>
+        <tr>
+            <th class="thRating">Rating</th>
+            <th class="thPercentage">Percentage</th>
+        </tr>
+        </thead>
+        <tbody id="ratingTableBody"></tbody>
+    </table>
+    <img src="~/Content/Images/ajax-loader.gif" id="loading-indicator" style="display:none" />
+    <span id="ratingErrorMessage" style="display: none;">There was an issue retrieving the ratings. Please try again later.</span>
+</div>
+
+
+
+
+<script id="rating-template" type="text/x-handlebars-template">
+    {{#each this}}
+    <tr>
+        <td>{{Rating}}</td>
+        <td>{{Percentage}}%</td>
+    </tr>
+    {{/each}}
+</script>
+
+@section scripts
+{
+    @Scripts.Render("~/bundles/ratings")
+
+    <script type="text/javascript">
+        Rating.init();
+    </script>
+}
