@@ -23,7 +23,7 @@ namespace FHR.Domain.Services
         }
         public IEnumerable<LocalAuthority> GetAuthorities()
         {
-            var request = new RestRequest(_configuration.FoodRatingApiRequestAuthorities, Method.POST);
+            var request = new RestRequest(_configuration.FoodRatingApiRequestAuthorities, Method.GET);
             request.AddHeader("x-api-version", _configuration.FoodRatingApiVersion); // API version to use.
             request.RootElement = "authorities"; // Tell RestSharp which Json element to start parsing at.
 

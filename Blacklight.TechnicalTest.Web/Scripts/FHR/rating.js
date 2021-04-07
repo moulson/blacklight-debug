@@ -18,7 +18,7 @@
     },
 
     bindUI: function () {
-        Rating.settings.authorityDropdown.changee(function () {
+        Rating.settings.authorityDropdown.change(function () {
             Rating.settings.ratingTableBody.html('');
             Rating.ratingErrorMessageVisible(false);
             Rating.fetchRatingPercentages($(this).val());
