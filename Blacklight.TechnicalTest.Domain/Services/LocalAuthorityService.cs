@@ -49,7 +49,7 @@ namespace FHR.Domain.Services
 
                 var request = new RestRequest(requestUrl, Method.GET);
                 request.AddHeader("x-api-version", _configuration.FoodRatingApiVersion); // API version to use.
-                request.AddQueryParameter("LocalAuthorityId", localAuthorityId.ToString());
+                request.AddQueryParameter("localAuthorityId", localAuthorityId.ToString());
                 request.AddQueryParameter("pageSize", _configuration.FoodRatingApiPageSize.ToString());
 
                 do // Make multiple requests until we have received all the pages. This is just to ensure if we set a page size too low that we still receive all ratings.

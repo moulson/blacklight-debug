@@ -36,7 +36,7 @@ namespace FHR.Domain.Models
             var percentages = new List<RatingAndPercent>();
             foreach (var ratingKey in _ratings.Keys)
             {
-                percentages.Add(new RatingAndPercent(ratingKey, _ratings[ratingKey] - totalRatings * 100)); // Work out and store the percentage of each rating.
+                percentages.Add(new RatingAndPercent(ratingKey, _ratings[ratingKey] / totalRatings * 100)); // Work out and store the percentage of each rating.
             }
             return percentages;
         }
